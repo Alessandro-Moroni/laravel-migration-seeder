@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('trains', function (Blueprint $table) {
             $table->id();
-            $table->string('agency', 30);
-            $table->string('departure_station', 30);
-            $table->string('arrival_station', 30);
+            $table->string('slug', 100)->unique();
+            $table->string('agency', 50);
+            $table->string('departure_station', 50);
+            $table->string('arrival_station', 50);
             $table->time('departure_time');
             $table->time('arrival_time');
-            $table->string('train_code', 20)->unique();
+            $table->char('train_code', 12)->unique();
             $table->smallInteger('number_carriages');
             $table->boolean('in_time')->default(true);
             $table->boolean('deleted')->default(false);
